@@ -1,0 +1,10 @@
+{
+  "name": "hailv-blog-website-repo",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix astro-setup run dev",
+    "build": "npm --prefix astro-setup run build",
+    "preview": "npm --prefix astro-setup run preview",
+    "deploy": "npm --prefix astro-setup run deploy"
+  }
+}
