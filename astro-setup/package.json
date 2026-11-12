@@ -10,9 +10,7 @@
     "build": "astro build",
     "preview": "astro build && wrangler pages dev",
     "astro": "astro",
-    "generate-types": "wrangler types",
-    "deploy": "astro build && wrangler pages deploy",
-    "cf-typegen": "wrangler types"
+    "deploy": "astro build && wrangler pages deploy"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.5",
