@@ -33,6 +33,14 @@ npm run preview
 
 Hoặc, sau khi đăng nhập Cloudflare bằng `npx wrangler login` trong `astro-setup/`, chạy `npm run deploy` từ gốc repo. Lệnh này xuất bản thật lên Cloudflare.
 
-Chưa triển khai website lên Cloudflare. Trước khi xuất bản, đổi `site` trong `astro-setup/astro.config.mjs` từ `https://example.com` sang tên miền thật, sửa nội dung trang chủ/giới thiệu và thay các bài mẫu trong `astro-setup/src/content/blog/`.
+## Website đã triển khai
+
+Địa chỉ chính: https://hailv-blog-website.pages.dev
+
+Đã triển khai bản mẫu lên Cloudflare Pages bằng Direct Upload ngày 12/11/2026. Mã triển khai: `9d32b1c0-fe5b-47ac-aac4-7413210328e5`. Trang chủ, blog, giới thiệu và RSS đã được kiểm tra trả về HTTP 200.
+
+Chưa bật tự động triển khai từ GitHub. Khi thay mã nguồn, cần dựng và triển khai lại.
+
+Khi có tên miền riêng, thêm vào Custom domains của dự án Pages, làm theo cấu hình DNS của Cloudflare, rồi cập nhật `site` trong `astro-setup/astro.config.mjs` và triển khai lại. Nội dung trang chủ/giới thiệu và các bài trong `astro-setup/src/content/blog/` hiện vẫn là nội dung mẫu.
 
 Tài liệu: https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/
