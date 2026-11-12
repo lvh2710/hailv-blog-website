@@ -1,0 +1,66 @@
+---
+const editorURL = 'https://app.pagescms.org/';
+---
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Quản trị | Hailv Blog</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+    <link rel="icon" href="/favicon.ico?v=2" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+    <link rel="stylesheet" href="/thiet-ke-blog/style.css" />
+    <script is:inline>
+      let mode; try { mode = localStorage.getItem('hailv-theme'); } catch {}
+      const hour = new Date().getHours();
+      document.documentElement.dataset.mode = ['light','dark'].includes(mode) ? mode : (hour >= 7 && hour < 19 ? 'light' : 'dark');
+    </script>
+  </head>
+  <body>
+    <header class="admin-header container"><a class="wordmark" href="/">hailv.</a><a class="text-link" href="/blog/">Xem blog</a></header>
+    <main class="admin-main container">
+      <h1>Góc viết của Hailv.</h1>
+      <p class="admin-lead">Thêm bài, sửa nội dung, tải ảnh và quản lý người cùng viết bằng Pages CMS.</p>
+      <a class="primary-link" href={editorURL}>Đăng nhập quản trị</a>
+      <p class="admin-help">Trang biên tập và đăng nhập mở tại app.pagescms.org.</p>
+      <section aria-labelledby="first-login">
+        <h2 id="first-login">Đăng nhập lần đầu</h2>
+        <ol>
+          <li>Đăng nhập Pages CMS bằng GitHub của bạn.</li>
+          <li>Cấp quyền cho ứng dụng Pages CMS vào repo <strong>lvh2710/hailv-blog-website</strong>.</li>
+          <li>Mở repo này, chọn nhánh <strong>main</strong>, rồi vào <strong>Bài viết</strong>.</li>
+        </ol>
+        <p>Cấu hình bài viết đã có trong repo. Đây là quyền của Pages CMS, khác với ứng dụng Javis OS.</p>
+      </section>
+      <section aria-labelledby="write-post">
+        <h2 id="write-post">Viết và xuất bản</h2>
+        <p>Thêm tiêu đề, mô tả, ngày đăng, tác giả, ảnh bìa và nội dung. Để tắt <strong>Công khai bài viết</strong> khi muốn lưu nháp; bật công tắc này rồi lưu để đưa bài lên blog.</p>
+        <p>Mỗi lần lưu vào main, GitHub Actions tự dựng lại website và triển khai lên Cloudflare. Bài sẽ hiện khi lần triển khai đó thành công.</p>
+        <p>Bản nháp được ẩn khỏi website. Repo GitHub hiện là public nên nội dung tệp và lịch sử chỉnh sửa vẫn có thể được xem trên GitHub.</p>
+      </section>
+      <section aria-labelledby="invite-writer">
+        <h2 id="invite-writer">Mời người cùng viết</h2>
+        <p>Trong repo trên Pages CMS, mở mục <strong>Collaborators</strong> và mời bằng email. Người nhận dùng liên kết đăng nhập được gửi tới email; không cần tài khoản GitHub.</p>
+        <p>Cộng tác viên được sửa bài và ảnh trong cấu hình này, không được quản lý cấu hình hoặc mời người khác. Hiện chưa phân quyền riêng theo từng tác giả hoặc tách người viết với người duyệt xuất bản.</p>
+      </section>
+      <footer class="admin-footer"><a href="https://pagescms.org/docs/quick-start/">Hướng dẫn Pages CMS</a><a href="https://github.com/lvh2710/hailv-blog-website/actions">Theo dõi triển khai</a></footer>
+    </main>
+  </body>
+</html>
+<style>
+  .admin-header{display:flex;align-items:center;justify-content:space-between;padding-block:var(--space-lg);border-bottom:1px solid var(--color-rule)}
+  .admin-main{max-width:900px;padding-block:var(--space-2xl)}
+  .admin-main h1{font-size:clamp(42px,7vw,64px)}
+  .admin-lead{font-size:18px;max-width:60ch;color:var(--color-ink-2);margin-top:var(--space-lg)}
+  .admin-help{font-size:13px;color:var(--color-muted);margin-top:var(--space-sm)}
+  section{border-top:1px solid var(--color-rule);margin-top:var(--space-xl);padding-top:var(--space-lg)}
+  section h2{font-size:32px;margin-bottom:var(--space-md)}
+  section p,li{font-size:16px;line-height:1.85;max-width:65ch}
+  section p+p{margin-top:var(--space-sm)}
+  ol{padding-inline-start:var(--space-lg)}
+  li+li{margin-top:var(--space-xs)}
+  .admin-footer{display:flex;flex-wrap:wrap;gap:var(--space-lg);margin-top:var(--space-xl);font-size:14px}
+  .admin-footer a{text-decoration:underline;text-underline-offset:4px}
+</style>

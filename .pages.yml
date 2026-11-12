@@ -1,0 +1,61 @@
+media:
+  input: astro-setup/public/uploads
+  output: /uploads
+  extensions: [jpg, jpeg, png, webp, avif, gif]
+  rename: safe
+
+content:
+  - name: posts
+    label: Bài viết
+    type: collection
+    path: astro-setup/src/content/blog
+    format: yaml-frontmatter
+    exclude: ["*.mdx"]
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, published, pubDate, author]
+      sort: [pubDate, title]
+      search: [title, description, author]
+      default:
+        sort: pubDate
+        order: desc
+    fields:
+      - name: title
+        label: Tiêu đề
+        type: string
+        required: true
+      - name: description
+        label: Mô tả ngắn
+        type: text
+        required: true
+      - name: pubDate
+        label: Ngày đăng
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: author
+        label: Tác giả
+        type: string
+      - name: coverImage
+        label: Ảnh bìa
+        type: image
+      - name: published
+        label: Công khai bài viết
+        type: boolean
+        default: false
+        description: Bật để hiện trên blog. Tắt để lưu bản nháp.
+      - name: body
+        label: Nội dung
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          switcher: true
+
+settings:
+  content:
+    merge: true
