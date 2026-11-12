@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="vi" data-mode="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bản thiết kế blog cá nhân Hailv: công nghệ, học hỏi và những ghi chép đời thường.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>Hailv Blog | Một góc nhỏ để đọc và nghĩ</title>
+  <script>
+    (() => {
+      let saved; try { saved = localStorage.getItem('hailv-theme'); } catch {}
+      const requested = new URLSearchParams(location.search).get('theme');
+      const mode = [requested, saved].find(v => ['auto', 'light', 'dark'].includes(v)) || 'auto';
+      const hour = new Date().getHours();
+      document.documentElement.dataset.mode = mode === 'auto' ? (hour >= 7 && hour < 19 ? 'light' : 'dark') : mode;
+      window.hailvInitialMode = mode;
+    })();
+  </script>
+  <link rel="preload" href="./assets/be-vietnam-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+    <symbol id="moon" viewBox="0 0 24 24"><path d="M20 14.4A8.5 8.5 0 0 1 9.6 4a8.5 8.5 0 1 0 10.4 10.4Z"/></symbol>
+    <symbol id="auto" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v16"/><path d="M12 5a7 7 0 0 1 0 14Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="chevron" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z"/></symbol>
+    <symbol id="menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="rss" viewBox="0 0 24 24"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1" fill="currentColor"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </defs></svg>
+
+  <header class="masthead">
+    <div class="container header-inner">
+      <a class="wordmark" href="#" aria-label="Hailv Blog, về đầu trang">hailv<span class="wordmark-period">.</span></a>
+      <nav id="navigation" class="navigation" aria-label="Điều hướng chính">
+        <a class="nav-current" href="#noi-dung" aria-current="page">Trang chủ</a>
+        <a href="#bai-viet">Bài viết</a>
+        <a href="#ve-toi">Về tôi</a>
+      </nav>
+      <div class="header-tools">
+        <button class="icon-button" id="search-open" aria-label="Tìm bài viết" title="Tìm bài viết (Ctrl hoặc Command + K)"><svg class="icon"><use href="#search"/></svg></button>
+        <span class="tool-divider" aria-hidden="true"></span>
+        <details class="theme-picker" id="theme-picker">
+          <summary aria-label="Chọn giao diện" title="Chọn giao diện sáng, tối hoặc tự động"><svg class="icon"><use id="theme-icon" href="#auto"/></svg><span id="theme-label">Tự động</span><svg class="icon small-icon"><use href="#chevron"/></svg></summary>
+          <div class="theme-panel">
+            <p class="panel-label">Giao diện đọc</p>
+            <div role="group" aria-label="Chọn giao diện đọc">
+              <button type="button" data-theme="auto" aria-pressed="true"><svg class="icon"><use href="#auto"/></svg><span>Tự động</span><svg class="icon choice-check"><use href="#check"/></svg></button>
+              <button type="button" data-theme="light" aria-pressed="false"><svg class="icon"><use href="#sun"/></svg><span>Sáng</span><svg class="icon choice-check"><use href="#check"/></svg></button>
+              <button type="button" data-theme="dark" aria-pressed="false"><svg class="icon"><use href="#moon"/></svg><span>Tối</span><svg class="icon choice-check"><use href="#check"/></svg></button>
+            </div>
+            <p class="timezone-note" id="timezone-note">Sáng từ 7h đến 19h theo giờ của bạn.</p>
+          </div>
+        </details>
+        <button class="icon-button mobile-menu" id="menu-toggle" aria-label="Mở điều hướng" aria-expanded="false" aria-controls="navigation"><svg class="icon"><use href="#menu"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="noi-dung">
+    <section class="intro container" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <h1 id="intro-title">Giữ lại những điều<br>đáng đọc.</h1>
+        <p>Ghi chép về công nghệ, học hỏi và cuộc sống thường ngày.</p>
+        <a class="primary-link" href="#bai-viet"><span>Khám phá bài viết</span><svg class="icon"><use href="#arrow"/></svg></a>
+      </div>
+
+    </section>
+
+    <section class="featured container" aria-labelledby="featured-title">
+      <div class="featured-image" data-slot="feature" data-alt="Ảnh phong cảnh hoặc ảnh thực tế cho bài viết nổi bật">
+        <img src="./assets/lake.webp" alt="Mặt hồ phẳng lặng phản chiếu rừng cây và núi đá" width="1440" height="954" fetchpriority="high">
+      </div>
+      <div class="featured-copy">
+        <h2 id="featured-title"><a class="title-link" href="#doc-slow" data-read="slow">Đôi khi, đi chậm là để thấy rõ hơn.</a></h2>
+        <p>Giữa những ngày đầy thông báo, thử dành lại một khoảng trống cho chính mình.</p>
+        <div class="article-meta"><span>Ghi chép</span><span>Bài viết minh họa</span></div>
+        <button class="text-link" data-read="slow"><span>Đọc câu chuyện</span><svg class="icon"><use href="#arrow"/></svg></button>
+        <button class="save-button featured-save" data-save="slow" aria-label="Lưu bài Đôi khi, đi chậm là để thấy rõ hơn" aria-pressed="false"><svg class="icon"><use href="#bookmark"/></svg></button>
+      </div>
+    </section>
+
+    <section class="journal container" id="bai-viet" aria-labelledby="journal-title">
+      <div class="section-heading"><h2 id="journal-title">Những trang viết mới</h2><p>Nội dung minh họa cho bản thiết kế</p></div>
+      <div class="filter-bar" role="group" aria-label="Lọc bài viết theo chủ đề">
+        <button class="filter active" data-filter="all" aria-pressed="true">Tất cả</button>
+        <button class="filter" data-filter="tech" aria-pressed="false">Công nghệ</button>
+        <button class="filter" data-filter="learn" aria-pressed="false">Học tập</button>
+        <button class="filter" data-filter="life" aria-pressed="false">Ghi chép</button>
+        <button class="filter saved-filter" data-filter="saved" aria-pressed="false"><svg class="icon"><use href="#bookmark"/></svg>Đã lưu<span id="saved-count" hidden></span></button>
+      </div>
+      <div class="journal-layout">
+        <div>
+          <div class="article-grid" id="article-grid">
+            <article class="article text-article" data-id="slow" data-category="life" data-featured="true" hidden>
+              <h3><a class="title-link" href="#doc-slow" data-read="slow">Đôi khi, đi chậm là để thấy rõ hơn.</a></h3>
+              <p>Một khoảng trống nhỏ giữa những ngày đầy thông báo.</p>
+              <div class="article-bottom"><div class="article-meta"><span>Ghi chép</span><span>Bài minh họa</span></div><button class="save-button" data-save="slow" aria-label="Bỏ lưu bài Đôi khi, đi chậm là để thấy rõ hơn" aria-pressed="false"><svg class="icon"><use href="#bookmark"/></svg></button></div>
+            </article>
+            <article class="article" data-id="ai" data-category="tech">
+              <button class="article-image" data-read="ai" tabindex="-1" aria-hidden="true"><img src="./assets/lake-detail.webp" alt="Rừng xanh phản chiếu trên mặt hồ" width="720" height="480" loading="lazy"></button>
+              <h3><a class="title-link" href="#doc-ai" data-read="ai">Dùng AI để có thêm thời gian, không phải thêm việc.</a></h3>
+              <p>Bắt đầu từ một việc nhỏ.</p>
+              <div class="article-bottom"><div class="article-meta"><span>Công nghệ</span><span>Bài minh họa</span></div><button class="save-button" data-save="ai" aria-label="Lưu bài Dùng AI để có thêm thời gian" aria-pressed="false"><svg class="icon"><use href="#bookmark"/></svg></button></div>
+            </article>
+            <article class="article" data-id="reading" data-category="learn">
+              <button class="article-image" data-read="reading" tabindex="-1" aria-hidden="true"><img src="./assets/book.webp" alt="Những trang sách mở với ánh sáng dịu" width="720" height="480" loading="lazy"></button>
+              <h3><a class="title-link" href="#doc-reading" data-read="reading">Đọc ít hơn một chút. Nhớ lâu hơn một chút.</a></h3>
+              <p>Đọc, ngẫm, rồi thử áp dụng.</p>
+              <div class="article-bottom"><div class="article-meta"><span>Học tập</span><span>Bài minh họa</span></div><button class="save-button" data-save="reading" aria-label="Lưu bài Đọc ít hơn một chút" aria-pressed="false"><svg class="icon"><use href="#bookmark"/></svg></button></div>
+            </article>
+            <article class="article text-article" data-id="english" data-category="learn">
+              <h3><a class="title-link" href="#doc-english" data-read="english">Học tiếng Anh từ những câu mình thật sự muốn nói.</a></h3>
+              <p>Từ bài học đến hội thoại.</p>
+              <div class="article-bottom"><div class="article-meta"><span>Học tập</span><span>Bài minh họa</span></div><button class="save-button" data-save="english" aria-label="Lưu bài Học tiếng Anh" aria-pressed="false"><svg class="icon"><use href="#bookmark"/></svg></button></div>
+            </article>
+            <article class="article text-article" data-id="notes" data-category="life">
+              <h3><a class="title-link" href="#doc-notes" data-read="notes">Một cuốn sổ cho những ý tưởng chưa thành hình.</a></h3>
+              <p>Cho ý tưởng một chỗ ở.</p>
+              <div class="article-bottom"><div class="article-meta"><span>Ghi chép</span><span>Bài minh họa</span></div><button class="save-button" data-save="notes" aria-label="Lưu bài Một cuốn sổ" aria-pressed="false"><svg class="icon"><use href="#bookmark"/></svg></button></div>
+            </article>
+          </div>
+          <p class="empty-state" id="empty-state" hidden>Chưa có bài nào ở đây. Bạn có thể lưu bài bằng biểu tượng dấu trang.</p>
+          <p class="results-status sr-only" id="results-status" role="status" aria-live="polite"></p>
+        </div>
+        <aside class="sidebar" id="ve-toi" aria-labelledby="about-title">
+          <div class="author-monogram" aria-hidden="true">h.</div>
+          <h2 id="about-title">Chào bạn,<br> mình là Hailv.</h2>
+          <p>Mình viết về công nghệ, học hỏi và đời sống.</p>
+          <p class="author-note">Đoạn giới thiệu gợi ý, sẽ thay bằng lời của bạn.</p>
+          <a class="text-link" href="https://github.com/lvh2710" target="_blank" rel="noopener noreferrer"><span>Gặp mình trên GitHub</span><svg class="icon"><use href="#arrow"/></svg></a>
+          <div class="reading-note"><h3>Đọc theo nhịp của bạn.</h3><p>Lưu một bài để đọc sau. Đổi sang nền tối khi trời đã muộn.</p><button class="text-link" id="open-theme-settings">Chọn giao diện đọc</button></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="closing-band" aria-labelledby="closing-title"><div class="container closing-inner"><div><h2 id="closing-title">Hẹn bạn ở trang viết tiếp theo.</h2><p>Một nơi để quay lại, khi bạn muốn đọc chậm hơn.</p></div><a class="rss-link" href="https://hailv-blog-website.pages.dev/rss.xml"><svg class="icon"><use href="#rss"/></svg>Theo dõi qua RSS</a></div></section>
+  </main>
+
+  <footer class="footer container"><div class="footer-top"><a class="wordmark" href="#">hailv<span class="wordmark-period">.</span></a><p>Một góc nhỏ để đọc và nghĩ.</p><a class="text-link" href="#noi-dung">Về đầu trang</a></div><div class="footer-bottom"><p>Bản thiết kế trang chủ. Các bài viết là nội dung minh họa.</p><details class="credits" data-credits><summary>Nguồn ảnh và cảm hứng</summary><p>Ảnh hồ: <a href="https://commons.wikimedia.org/wiki/File:Lake_Kinney_mit_Mount_Whitehorn.jpg">Florian Fuchs</a>, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. Ảnh sách: <a href="https://commons.wikimedia.org/wiki/File:Open_Book_b%26w.jpg">Bibliothek Wissenschaftspark Albert Einstein</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Ảnh đã cắt khung, đổi kích thước và chuyển WebP. Cảm hứng bố cục: <a href="https://colorlib.com/wp/clean-website-templates/#h-2-gillion">Gillion trong tuyển tập Colorlib</a>. Phông chữ: Be Vietnam Pro và Newsreader, Google Fonts.</p></details></div></footer>
+
+  <dialog class="search-dialog" id="search-dialog" aria-labelledby="search-title"><div class="dialog-heading"><h2 id="search-title">Bạn muốn đọc gì?</h2><button class="icon-button" data-close="search-dialog" aria-label="Đóng tìm kiếm"><svg class="icon"><use href="#close"/></svg></button></div><label class="search-input-wrap"><svg class="icon"><use href="#search"/></svg><span class="sr-only">Tìm theo tên bài hoặc chủ đề</span><input id="search-input" type="search" placeholder="Tìm một câu chuyện, một ý tưởng…" autocomplete="off"></label><div class="search-results" id="search-results" aria-live="polite"></div><p class="dialog-hint">Nhấn Esc để đóng. Tìm trong các bài minh họa.</p></dialog>
+
+  <dialog class="reading-dialog" id="reading-dialog" aria-labelledby="reading-title"><div class="reader-toolbar"><span>Hailv Blog</span><span class="reader-controls"><button class="type-button" id="font-smaller" aria-label="Giảm cỡ chữ">A−</button><button class="type-button" id="font-larger" aria-label="Tăng cỡ chữ">A+</button><button class="icon-button" data-close="reading-dialog" aria-label="Đóng bài viết"><svg class="icon"><use href="#close"/></svg></button></span></div><article class="reader-content"><p class="sample-note">Bài viết minh họa để trải nghiệm bố cục đọc</p><h2 id="reading-title"></h2><div class="reader-meta" id="reading-category"></div><div class="reading-prose" id="reading-prose"></div><p class="reader-end">Cảm ơn bạn đã dành một khoảng thời gian để đọc.</p></article></dialog>
+  <script src="./app.js"></script>
+</body>
+</html>
